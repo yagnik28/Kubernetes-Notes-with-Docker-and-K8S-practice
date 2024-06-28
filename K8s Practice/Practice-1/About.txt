@@ -1,0 +1,7 @@
+This project is a Demo of a real project using K8s:
+
+
+All the configurations are done one-by-one(More explaination in About of Project-3).
+Accessing the "webapp" at IP Address of webapp pod:30100.
+To start the project run the all file in order, secret, configmap, mongo, webapp and look at the IP Address of the webapp pod using kubectl and get nodePort written in the webapp that is where our pod is listened for outside world. 
+Then do this => IP Address:30100

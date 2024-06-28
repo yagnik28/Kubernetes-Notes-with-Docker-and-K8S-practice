@@ -1,0 +1,5 @@
+This project is a Deployment Demo:
+
+nginx-deployment.yaml file is used for configuration of the deployment and the configuration of pods of the deployment.
+
+Then K8s itself adds "status" in the configuration to track the informations(done by etcd) and that new updated file nginx-deployment-result.yaml extracted from CLI.

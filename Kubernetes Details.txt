@@ -1,0 +1,58 @@
+Kubernetes: It is a orchestration tool for managing dockers and useful for a large application containing 100s or 1000s of containers running of an application. Like, Microservice application.
+____________________________________________________________________________________________________________________________________________________________
+
+Architecture: Master Node and Worker Node.
+
+	Master Node: It has 4 Processes. API Server, Scheduler, Controller Manager, and etcd.
+
+		API Server: Entry point for Kubernetes(k8s) cluster. (Another methods, UI and Kubernetes CLI(Kubectl))
+		Scheduler: Decides and schedules which pod will be send to which worker Node based on workload and requires resources(uses etcd storage
+			   to know about workload and required resources of any node).		
+		Controller Manager: Manages all the pods(containers) in the cluster and keeps track what happening in the cluster(uses etcd storage to
+				   check if any change happened on cluster). If any pod dies then tells Scheduler to add the new pod to particular node.
+		etcd: Kubernetes backing store. keeps key-value pair and at any time store the current state of the cluster.
+		
+		If multiple Master Nodes are there then API Server will be load balanced and etcd will be distributed storage.
+		
+
+	Worker Node: Contains the different pods and 3 processes. Kubelet, Kube Proxy, and Container Runtime.
+
+		Kubelet: Interface between pods and node. Responsible for running any pod in cluster using container runtime
+			(If any new came or restart requires).
+		Kube Proxy: Forwards request from service to pod. Works intelligently, try to send request to replica present in same node if possible.
+		Container Runtime: Runtime used for running containers. Here, we are using docker.
+
+	Virtual Network: Creates one unified machine consisting of all the worker nodes and lies b/w master node and worker nodes.
+____________________________________________________________________________________________________________________________________________________________
+
+Node: It is a physical or virtual machine in which the master or worker processes are running.
+
+Pod: Abstraction over container. Usually, contains 1 Container per Pod.
+
+IP Address: Each Pod in the cluster given virtual IP Addresses. When a pod dies and replaced with another pod with same functionality 
+	    then it's IP Address will change.
+
+Service: Pod has permanent IP Address and used as load balancer for multiple replicas.
+
+Ingress: External IP Address. When APP is running then domain required then conversion from domain to IP and vice versa is done.
+         Where, for Internal IP Addresses no need of domain as machine can locate using IPs.
+
+ConfigMap: Configuration changes can be done without rebuilding or doing the cycle of recreation of image, pull, push and running container.
+
+Secret: For Configurational Confidential change. Like, DATABSAE Username and Password.
+
+Volume: Persistent Storage. Stores data in physical, remote or premise machines such that whenever container restarts the old data can be restored. 
+
+Deployment: K8s creates replicas of pods in many worker nodes and for stateless containers it's called Deployment.
+
+StateFulSet: K8s creates replicas of pods in many worker nodes but for stateful containers, It is managing the consistency.
+	     Like, DATABSE Replicas where consistency in write and read operations in all the replicas.
+____________________________________________________________________________________________________________________________________________________________
+
+MiniKube: Provides the K8s cluster in a single machine. In single machine both Master and Worker processes are running.
+
+Kubectl: Provides CLI for Minikube and distributed K8s cluster where through CLI the commands can be given to worker nodes instead of API SERVER.
+
+Minikube CLI: Start/Delete the cluster.
+
+Kubectl CLI: Configuring the cluster.

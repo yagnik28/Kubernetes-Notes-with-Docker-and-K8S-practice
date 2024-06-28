@@ -1,0 +1,10 @@
+This project is a Demo Project for opening K8s-dashboard on domain name which is working as follows:
+
+
+As we configure the k8s-dashboard-ingress.yaml the IP Address for the "host" written in the file will be assign for this Ingress.
+
+User enters the K8s-dashboard.com and request comes to minikube cluster in the cluster it goes to ingress-controller-pod.
+
+Which will go to Ingress and checks all the rules and according to that it sends the request to the kubernetes-dashboard service.
+ 
+From kubernetes-dashboard service it goes to kubernetes-dashboard pod.

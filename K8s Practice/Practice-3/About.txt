@@ -1,0 +1,12 @@
+This project is a Demo Project which is working as follows:
+
+
+User enters the Ip address and port number of mongo-express service which is external service.
+
+Then request reach to mongo-express-service where through targetPort written in service which matches with the containerPort of the mongo-express pod and request forwards to that pod.
+
+In that mongo-express pod the details of MONGODB Username, Password, and Server(DB_URL)(as we are in a node. so, DB_URL will be the service name and that is enough to find that service in the node) is written.
+
+Then using DB_URL request goes to mongodb-service which is internal service(only, components inside that node can access) with targetPort of mongodb which matches with containerPort of mongodb.
+
+Then using that targetPort request reach to mongodb. 
